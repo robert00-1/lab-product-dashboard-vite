@@ -3,6 +3,7 @@ import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
 import App from '../App'
 
+// Sample products for reference
 const sampleProducts = [
   { id: 1, name: 'Laptop', price: '$999', inStock: true },
   { id: 2, name: 'Phone', price: '$699', inStock: false },
@@ -18,24 +19,36 @@ test('displays all products initially', () => {
   render(<App />)
 
   sampleProducts.forEach((product) => {
+    // Check that each product is rendered
     expect(screen.getByText(product.name)).toBeInTheDocument()
   })
 })
 
 test('applies conditional styling for out-of-stock products', () => {
   render(<App />)
-  const outOfStockProduct = screen.getByText(/Phone/i) // Make sure "Phone" exists in sampleProducts
-  expect(outOfStockProduct.closest('div')).toHaveClass('outOfStockClass')
+
+  // Get the "Phone" product element by text
+  const phoneElement = screen.getByText('Phone')
+
+  // Get the closest div that wraps the product card
+  const container = phoneElement.closest('div')
+
+  // Ensure the container exists and has the correct class
+  expect(container).toBeInTheDocument()
+  expect(container).toHaveClass('outOfStockClass')
 })
 
 test('removes product from the dashboard when "Remove" button is clicked', () => {
   render(<App />)
-  const removeButtons = screen.queryAllByText(/Remove/i)
 
-  expect(removeButtons.length).toBeGreaterThan(0) // Ensure buttons exist
+  // Get all remove buttons
+  const removeButtons = screen.getAllByText(/Remove/i)
+  expect(removeButtons.length).toBeGreaterThan(0)
 
-  if (removeButtons.length > 0) {
-    fireEvent.click(removeButtons[0])
-    expect(removeButtons[0]).not.toBeInTheDocument() // Expect removal to work
-  }
+  // Click the first remove button
+  fireEvent.click(removeButtons[0])
+
+  // Check that the corresponding product is removed from the DOM
+  const removedProductName = sampleProducts[0].name
+  expect(screen.queryByText(removedProductName)).not.toBeInTheDocument()
 })

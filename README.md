@@ -1,120 +1,58 @@
-# Lab: Product Dashboard Manager
+# Title : Product Dashboard
 
-## Introduction
+# Description
+Product Dashboard is a reponsive web application built with React and Vite that allows users to view, manage and interact with list of products. The dashboard displays product information, hihghliht out-of-stock items and provides functionally to remove product from the view.
 
-Your company is developing an **e-commerce platform**, and you have been assigned to create a **Product Dashboard**. This dashboard will dynamically display a list of products, allow users to filter products by availability, and apply **conditional rendering** to display different UI states.
+Features
 
-Your goal is to structure the React components, apply styles using **CSS Modules and Material UI**, and ensure that the dashboard passes all pre-written automated tests using **Jest and React Testing Library**.
+View Products: Displays a list of products with name, price, and stock status.
 
----
+Conditional Styling: Highlights out-of-stock products visually.
 
-## **Challenge**
-1. Update Existing Element of the title
-2. Create New Elements for each product
+Product Management: Allows users to remove products from the dashboard.
 
-## **Bonus Challenge**
-3. Delete Element
+Responsive Design: Optimized for desktop and mobile layouts using Material-UI Grid.
 
----
+Interactive UI: “Buy Now” and “Remove” buttons for each product.
 
-## **Instructions**
+# Tools
 
-### **1️⃣ Fork and Clone the Repository**  
-1. Go to the provided **GitHub repository link**.
-2. **Fork** the repository to your GitHub account.
-3. **Clone** the forked repository to your local machine:
-   ```sh
-   git clone <your-forked-repository-url>
-   cd product-dashboard
-   ```
-4. Open the project in **VSCode**.
-5. Run the following command to install all necessary dependencies:
-   ```sh
-   npm install
-   ```
+React – For building the UI components.
 
-### **2️⃣ Update Existing Element**
-- Modify the existing **header** element to display the **Product Dashboard title**.
-- Select the **DOM element** with the ID of `header`.
-- Store it in a variable called `dashboardTitle`.
-- Change the **textContent** of `dashboardTitle` to **"Product Dashboard"**.
+Vite – For fast development and build tooling.
 
-### **3️⃣ Create New Elements for Each Product**
-- Loop through every product in the dataset.
-- Each product is stored in an **array**.
-- Inside the loop, create and configure the following **new elements**:
-  - **`div` element (`productContainer`)** to hold product details.
-  - **`h3` element (`productTitle`)** to display the product name.
-  - **`p` element (`productPrice`)** to show the product's price.
-  - **`p` element (`productAvailability`)** to indicate if the product is **in stock or out of stock**.
-  - **`img` element (`productImage`)** to display the product image.
+Material-UI – For UI components and styling.
 
-### **4️⃣ Append Elements to the DOM**
-- Select the element with the ID `product-list` and store it in a variable called `productList`.
-- Append `productTitle`, `productPrice`, `productAvailability`, and `productImage` to `productContainer`.
-- Append `productContainer` to `productList`.
+React Testing Library & Vitest – For component testing and validation.
 
-### **5️⃣ Implement Conditional Rendering**
-- Products that are **out of stock** should be **styled differently**.
-- Use **CSS Modules** to apply a different background color to out-of-stock items.
+# Setup
 
----
+Clone the repository:
 
-## **Bonus Challenge: Delete Element**
-- Implement a feature that allows users to **remove a product** from the dashboard.
-- Add a **"Remove" button** next to each product.
-- When clicked, the button should **delete the product element** from the page.
+git clone https://github.com/robert00-1/lab-product-dashboard-vite.git
+navigate into the project folder
+cd lab-product-dashboard-vite
 
----
 
-## **BONUS: Remove Elements from the DOM**
+Install dependencies:
 
-We know how to add elements and change their attributes. What if we want to
-remove an element from a page?
+npm install
 
-### `removeChild()`
+npm run dev
+ 
+ copy paste the link to the browser to see the products https: //localhost: 5173/
+ the product dashboard will appear
 
-We use `removeChild()`, as you might guess, to remove a particular child of an
-element:
+ # Screenshot
+ ![alt text](<Screenshot from 2026-02-02 00-26-13.png>)
 
-```js
-someElement.removeChild(someChildElement);
-```
+# Additional Instructions
+make sure you have install whole dependacies 
+npm install
+npm run dev
 
-Let's take a look at a more complex example:
+# Licenses
+This project  is for learning purposes
 
-```js
-const productList = document.getElementById("product-list");
-const firstProduct = productList.querySelector("div:first-child");
-productList.removeChild(firstProduct);
-```
-
-Here you can see the power of `querySelector()`: we can use it to find the
-first product in the list. We then pass that element as the argument to our
-`removeChild` method, which removes it from the dashboard.
-
-What if we want to remove the entire product list?
-
-### `element.remove()`
-
-We can just call `remove()` on the element itself:
-
-```js
-productList.remove();
-```
-
-And it's gone!
-
----
-
-## **Resources**
-
-- [React Documentation](https://react.dev)
-- [CSS Modules Documentation](https://github.com/css-modules/css-modules)
-- [Material UI Documentation](https://mui.com)
-- [Jest Testing Framework](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com)
-- [document.createElement()](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
-- [append()](https://developer.mozilla.org/en-US/docs/Web/API/Element/append)
-- [removeChild()](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
-- [element.remove()](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)
+# Author 
+Robert Mmasi

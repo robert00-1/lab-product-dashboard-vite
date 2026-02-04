@@ -1,19 +1,35 @@
-import React from 'react';
-import styles from '../styles/ProductCard.module.css';
+// src/components/ProductCard.jsx
+import React from "react";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 
-const ProductCard = ({ product }) => {
+export default function ProductCard({ product, onRemove }) {
+  // Conditional class for out-of-stock products
+  const cardClass = product.inStock ? "inStockClass" : "outOfStockClass";
+
   return (
-    <div className>
-      {/* TODO: Apply conditional class to <div> above for out-of-stock items */}
-      
-      {/* TODO: Display product name */}
-
-      {/* TODO: Display product price */}
-
-      {/* TODO: Show if the product is in stock or out of stock */}
-      
-    </div>
+    <Card className={cardClass} sx={{ margin: 1 }}>
+      <CardContent>
+        <Typography variant="h6">{product.name}</Typography>
+        <Typography variant="body1">KES {product.price}</Typography>
+        <Typography variant="body2" gutterBottom>
+          {product.inStock ? "In Stock ✅" : "Out of Stock ❌"}
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={!product.inStock}
+        >
+          Buy Now
+        </Button>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => onRemove(product.id)}
+          sx={{ marginLeft: 1 }}
+        >
+          Remove
+        </Button>
+      </CardContent>
+    </Card>
   );
-};
-
-export default ProductCard;
+}

@@ -1,14 +1,20 @@
-import React from 'react';
-import ProductCard from './ProductCard';
+import React from 'react'
 
-const ProductList = ({ products }) => {
-  // TODO: Check if the product list is empty and display a message if needed
-
+export default function ProductList({ products, removeProduct }) {
   return (
-    <div>
-      {/* TODO: Iterate over the products array and render a ProductCard for each product */}
+    <div className="product-grid">
+      {products.map((product) => (
+        <div
+          key={product.id} // unique key
+          className={product.inStock ? 'inStockClass' : 'outOfStockClass'}
+        >
+          <h6>{product.name}</h6>
+          <p>{product.price}</p>
+          <p>{product.inStock ? 'In Stock ✅' : 'Out of Stock ❌'}</p>
+          <button disabled={!product.inStock}>Buy Now</button>
+          <button onClick={() => removeProduct(product.id)}>Remove</button>
+        </div>
+      ))}
     </div>
-  );
-};
-
-export default ProductList;
+  )
+}
